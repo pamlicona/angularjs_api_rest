@@ -1,0 +1,22 @@
+<h2 class="title-page">Nueva Canción</h2>
+<div class="new-registry">
+  <a class="save" ng-click="sendAlbum()">
+    Guardar
+  </a>
+  <a class="cancel" ng-href="#/albumes">
+    Cancelar
+  </a>
+</div>
+<section class="section-search">
+  <div class="container-flex">
+    <div class="loading" ng-show='loading'>Cargando...</div>
+    <div class="input-container">
+      <div class="formLabel">
+        <label>Canción</label>
+      </div>
+      <div>
+        <input type="text" ng-model="song.name">
+      </div>
+    </div>
+  </div>
+</section>

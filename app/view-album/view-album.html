@@ -1,0 +1,38 @@
+<h2 class="title-page">Canciones</h2>
+<div class="new-registry">
+  <a class="save" ng-href="#/new-song">
+    Nueva canción
+  </a>
+</div>
+<section class="section-search">
+  <div ng-cloak>
+    <div class="container-list">
+      <div class="search-th">
+        <div class="th-num">Nombre</div>
+      </div>
+      <div class="loading" ng-show='loading'>Cargando...</div>
+      <div ng-show="!loading" class="search-td">
+        <div class="container-tab">
+          <div class="td-song">Canción 1</div>
+          <p class="remove" ng-click="deleteSong(album.id)">Eliminar</p>
+        </div>  
+        <div class="container-tab">
+          <div class="td-song">Canción 2</div>
+          <p class="remove" ng-click="deleteSong(album.id)">Eliminar</p>
+        </div>
+        <div class="container-tab">
+          <div class="td-song">Canción 3</div>
+          <p class="remove" ng-click="deleteSong(album.id)">Eliminar</p>
+        </div>
+        <div class="container-tab">
+          <div class="td-song">Canción 4</div>
+          <p class="remove" ng-click="deleteSong(album.id)">Eliminar</p>
+        </div>
+        <div class="container-tab">
+          <div class="td-song">Canción 5</div>
+          <p class="remove" ng-click="deleteSong(album.id)">Eliminar</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
