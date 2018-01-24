@@ -3,24 +3,29 @@
 angular.module('myApp.view-album', ['ngRoute'])
   .controller('viewAlbumController', viewAlbumController);
 
-function viewAlbumController(scope, HttpService, location, rootScope) {
+function viewAlbumController(scope, HttpService, location, routeParams) {
   scope.loading = false;
 
-  HttpService.generateNativePetition('/song/getAll', 'POST', null, function (success, error) {
-    scope.$apply(function () {
-      if (success) {
-        scope.songs = success.data;
-      }
-      scope.loading = false;
-    });
-  });
-
-  scope.deleteSong = function (idAlbum) {
-    scope.loading = true;
-    HttpService.generateNativePetition('/song/remove', 'POST', null, function (success, error) {
+  function getSongs() {
+    HttpService.generateNativePetition('/songs/' + routeParams.id, 'GET', null, function (success, error) {
+      scope.loading = true;
       scope.$apply(function () {
         if (success) {
-          scope.songs = success.data;
+          scope.songs = JSON.parse(success);
+        }
+        scope.loading = false;
+      });
+    });
+  } 
+  
+  getSongs() 
+
+  scope.deleteSong = function (idSong) {
+    scope.loading = true;
+    HttpService.generateNativePetition('/songs/' + idSong + '/', 'POST', null, function (success, error) {
+      scope.$apply(function () {
+        if (success === 204) {
+          getSongs()
         }  
         scope.loading = false;
       });
@@ -29,4 +34,4 @@ function viewAlbumController(scope, HttpService, location, rootScope) {
 
 }
 
-viewAlbumController.$inject = ['$scope', 'HttpService', '$location', '$rootScope'];
+viewAlbumController.$inject = ['$scope', 'HttpService', '$location', '$routeParams'];

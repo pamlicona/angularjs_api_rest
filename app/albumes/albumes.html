@@ -12,25 +12,9 @@
       </div>
       <div class="loading" ng-show='loading'>Cargando...</div>
       <div ng-show="!loading" class="search-td">
-        <div class="container-tab">
-          <div class="td-num" ng-click="viewReservation(album)">Álbum 1</div>
-          <p class="remove" ng-click="deletAlbum(album.id)">Eliminar</p>
-        </div>  
-        <div class="container-tab">
-          <div class="td-num" ng-click="viewReservation(album)">Álbum 2</div>
-          <p class="remove" ng-click="deletAlbum(album.id)">Eliminar</p>
-        </div>
-        <div class="container-tab">
-          <div class="td-num" ng-click="viewReservation(album)">Álbum 3</div>
-          <p class="remove" ng-click="deletAlbum(album.id)">Eliminar</p>
-        </div>
-        <div class="container-tab">
-          <div class="td-num" ng-click="viewReservation(album)">Álbum 4</div>
-          <p class="remove" ng-click="deletAlbum(album.id)">Eliminar</p>
-        </div>
-        <div class="container-tab">
-          <div class="td-num" ng-click="viewReservation(album)">Álbum 5</div>
-          <p class="remove" ng-click="deletAlbum(album.id)">Eliminar</p>
+        <div class="container-tab" ng-repeat="album in albumes">
+          <div class="td-num" ng-click="viewReservation(album.pk)">{{ album.fields.name }}</div>
+          <p class="remove" ng-click="deletAlbum(album.pk)">Eliminar</p>
         </div>
       </div>
     </div>

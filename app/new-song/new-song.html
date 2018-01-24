@@ -10,13 +10,23 @@
 <section class="section-search">
   <div class="container-flex">
     <div class="loading" ng-show='loading'>Cargando...</div>
-    <div class="input-container">
+    <div class="input-container" ng-show='!loading'>
       <div class="formLabel">
         <label>Canción</label>
       </div>
       <div>
         <input type="text" ng-model="song.name">
       </div>
+      <div class="formLabel">
+        <label>Album</label>
+      </div>
+      <div>
+        <select ng-model="song.albumId">
+          <option disabled selected value>Select album</option>
+          <option ng-repeat="albume in albumes" ng-value="{{ albume.pk }}">{{ albume.fields.name }}</option>
+        </select>
+      </div>
+      <p class="error" ng-if="error">*Llena los campos necesarios</p>
     </div>
   </div>
 </section>

@@ -6,7 +6,7 @@ app.factory('HttpService', HttpService);
 
 function HttpService(http, rootScope, location) {
   var service = {},
-    baseApi = "http://sandbox.neopraxis.getmore.mx:1337";
+    baseApi = "http://127.0.0.1:8001";
 
   service.generateNativePetition = generateNativePetition;
 

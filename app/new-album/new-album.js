@@ -6,18 +6,24 @@ angular.module('myApp.new-album', ['ngRoute'])
 function newAlbumController(scope, location, HttpService) {
   //TODO change for true when exist request
   scope.album = {};
+  scope.error = false;
 
   scope.sendAlbum = function () {
-    HttpService.generateNativePetition('/album/add', 'POST', scope.album, function (success, error) {
-      scope.loading = true;
-      scope.$apply(function () {
-        if (success) {
-            // Redirect albums
-        }
-        scope.loading = false;
+    if (scope.album.hasOwnProperty('name')) {
+      HttpService.generateNativePetition('/albumes/', 'POST', scope.album, function (success, error) {
+        scope.loading = true;
+        scope.$apply(function () {
+          if (success === 204 ) {
+            scope.album = {};
+            location.path('/#/albumes');
+          }
+          scope.loading = false;
+        });
       });
-    });
-  };
+    } else {
+      scope.error = true;
+    }
+  };    
 
 }
 
